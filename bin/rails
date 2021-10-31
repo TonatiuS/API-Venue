@@ -3,3 +3,4 @@ load File.expand_path("spring", __dir__)
 APP_PATH = File.expand_path('../config/application', __dir__)
 require_relative "../config/boot"
 require "rails/commands"
+jwt: 48fd376d575ad7b167ca0d1918bf038449883fd75678166b2d63eeb404de1c7c1a1984b69d945fcbdba14d941f85336ab483a41c66f270dc557192395abbdcea
