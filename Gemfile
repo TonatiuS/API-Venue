@@ -27,8 +27,8 @@ gem 'bootsnap', '>= 1.4.4', require: false
 
 # Authentication
 gem 'devise', '~> 4.8.0'
-gem 'devise-security'
 gem 'devise-jwt', '~> 0.9.0'
+gem 'devise-security'
 
 #Test
 gem 'rspec', '~> 3.10'
