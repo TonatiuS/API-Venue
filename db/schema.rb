@@ -10,10 +10,27 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_10_31_204233) do
+ActiveRecord::Schema.define(version: 2021_10_31_224604) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "admin_users", force: :cascade do |t|
+    t.string "contrato"
+    t.integer "user_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "client_users", force: :cascade do |t|
+    t.decimal "card"
+    t.datetime "date_card"
+    t.decimal "cv"
+    t.integer "history_ticket_id"
+    t.integer "user_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "cupons", force: :cascade do |t|
     t.string "code"
@@ -42,10 +59,24 @@ ActiveRecord::Schema.define(version: 2021_10_31_204233) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "history_tickets", force: :cascade do |t|
+    t.integer "client_user_id"
+    t.integer "ticket_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "places", force: :cascade do |t|
     t.string "adress"
     t.string "name"
     t.integer "state_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "stand_users", force: :cascade do |t|
+    t.string "contrato"
+    t.integer "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -92,6 +123,7 @@ ActiveRecord::Schema.define(version: 2021_10_31_204233) do
     t.boolean "active"
     t.string "name"
     t.string "last_name"
+    t.integer "ticket_type_id"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["jti"], name: "index_users_on_jti", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true

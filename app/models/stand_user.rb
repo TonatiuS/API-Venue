@@ -1,0 +1,2 @@
+class StandUser < ApplicationRecord
+end

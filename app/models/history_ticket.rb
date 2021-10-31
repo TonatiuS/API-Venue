@@ -1,0 +1,2 @@
+class HistoryTicket < ApplicationRecord
+end

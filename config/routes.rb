@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  resources :history_tickets
+  resources :client_users
+  resources :stand_users
+  resources :admin_users
   devise_for :users, skip: %i[registrations sessions passwords]
   devise_scope :user do 
     post '/signup', to: 'registrations#create'
