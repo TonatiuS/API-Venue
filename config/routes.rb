@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  resources :ticket_types
+  resources :events
+  resources :date_venues
   resources :places
   resources :states
   resources :cupons

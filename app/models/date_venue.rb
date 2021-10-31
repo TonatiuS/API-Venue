@@ -1,0 +1,2 @@
+class DateVenue < ApplicationRecord
+end
