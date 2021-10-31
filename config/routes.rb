@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+  devise_for :users, skip: %i[registrations sessions passwords]
+  devise_scope :user do 
+    post '/signup', to: 'registrations#create'
+    post '/login', to: 'sessions#create'
+    delete '/logout', to: 'sessions#destroy'
+  end
   devise_for :users
   resources :tickets
   resources :ticket_types
