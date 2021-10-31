@@ -26,7 +26,7 @@ gem 'bootsnap', '>= 1.4.4', require: false
 # gem 'rack-cors'
 
 # Authentication
-gem 'devise', '~> 4.8'
+gem 'devise', '~> 4.8.0'
 gem 'devise-security'
 gem 'devise-jwt', '~> 0.9.0'
 
