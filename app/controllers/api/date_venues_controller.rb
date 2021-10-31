@@ -1,4 +1,4 @@
-class DateVenuesController < ApplicationController
+class Api::V1::DateVenuesController < Api::V1::BaseController
   before_action :set_date_venue, only: [:show, :update, :destroy]
 
   # GET /date_venues

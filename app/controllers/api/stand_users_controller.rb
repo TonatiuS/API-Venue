@@ -1,4 +1,4 @@
-class StandUsersController < ApplicationController
+class Api::V1::StandUsersController < Api::V1::BaseController
   before_action :set_stand_user, only: [:show, :update, :destroy]
 
   # GET /stand_users

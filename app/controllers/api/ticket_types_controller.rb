@@ -1,4 +1,4 @@
-class TicketTypesController < ApplicationController
+class Api::V1::TicketTypesController < Api::V1::BaseController
   before_action :set_ticket_type, only: [:show, :update, :destroy]
 
   # GET /ticket_types

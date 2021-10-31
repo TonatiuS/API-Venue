@@ -1,4 +1,4 @@
-class CuponsController < ApplicationController
+class Api::V1::CuponsController < Api::V1::BaseController
   before_action :set_cupon, only: [:show, :update, :destroy]
 
   # GET /cupons

@@ -1,4 +1,4 @@
-class StatesController < ApplicationController
+class Api::V1::StatesController < Api::V1::BaseController
   before_action :set_state, only: [:show, :update, :destroy]
 
   # GET /states
