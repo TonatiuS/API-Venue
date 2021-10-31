@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :tickets
   resources :ticket_types
   resources :events
   resources :date_venues
