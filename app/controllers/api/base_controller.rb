@@ -1,10 +1,9 @@
-class Api::V1::BaseController < ActionController::API
+class Api::BaseController < ActionController::API
   include Pundit
   rescue_from ActiveRecord::RecordNotFound, with: :not_found
   rescue_from Pundit::NotAuthorizedError, with: :not_found
-  protect_from_forgery with: :null_session
-  before_action :set_raven_context
-  layout false
+  # protect_from_forgery with: :null_session
+  # before_action :set_raven_context
 
   def pundit_user
     @current_user

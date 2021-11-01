@@ -1,4 +1,4 @@
-class Api::V1::TicketsController < Api::V1::BaseController
+class Api::TicketsController < Api::BaseController
   before_action :set_ticket, only: [:show, :update, :destroy]
 
   # GET /tickets

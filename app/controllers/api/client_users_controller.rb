@@ -1,4 +1,4 @@
-class Api::V1::ClientUsersController < Api::V1::BaseController
+class Api::ClientUsersController < Api::BaseController
   before_action :set_client_user, only: [:show, :update, :destroy]
 
   # GET /client_users

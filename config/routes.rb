@@ -9,13 +9,16 @@ Rails.application.routes.draw do
     post '/login', to: 'sessions#create'
     delete '/logout', to: 'sessions#destroy'
   end
-  devise_for :users
-  resources :tickets
-  resources :ticket_types
-  resources :events
-  resources :date_venues
-  resources :places
-  resources :states
-  resources :cupons
+  namespace :api do
+
+    devise_for :users
+    resources :tickets
+    resources :ticket_types
+    resources :events
+    resources :date_venues
+    resources :places
+    resources :states
+    resources :cupons
+  end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

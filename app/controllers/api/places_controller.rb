@@ -1,4 +1,4 @@
-class Api::V1::PlacesController < Api::V1::BaseController
+class Api::PlacesController < Api::BaseController
   before_action :set_place, only: [:show, :update, :destroy]
 
   # GET /places

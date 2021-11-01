@@ -1,8 +1,10 @@
-class Api::V1::StatesController < Api::V1::BaseController
+class Api::StatesController < Api::BaseController
+  before_action :ensure_and_set_current_user
   before_action :set_state, only: [:show, :update, :destroy]
 
   # GET /states
   def index
+    debugger
     @states = State.all
 
     render json: @states

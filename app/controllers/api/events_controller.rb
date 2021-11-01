@@ -1,4 +1,4 @@
-class Api::V1::EventsController < Api::V1::BaseController
+class Api::EventsController < Api::BaseController
   before_action :set_event, only: [:show, :update, :destroy]
 
   # GET /events

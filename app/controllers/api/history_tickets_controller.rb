@@ -1,4 +1,4 @@
-class Api::V1::HistoryTicketsController < Api::V1::BaseController
+class Api::HistoryTicketsController < Api::BaseController
   before_action :set_history_ticket, only: [:show, :update, :destroy]
 
   # GET /history_tickets

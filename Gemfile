@@ -30,6 +30,12 @@ gem 'devise', '~> 4.8.0'
 gem 'devise-jwt', '~> 0.9.0'
 gem 'devise-security'
 
+# Patterns Implementation
+gem 'pundit', '~> 2.0'
+gem 'simple_command', '~> 0.0.9'
+
+
+
 #Test
 gem 'rspec', '~> 3.10'
 gem 'rspec-rails', ">= 5.0.2"
