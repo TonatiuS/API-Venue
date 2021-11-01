@@ -1,4 +1,5 @@
 class Api::AdminUsersController < Api::BaseController
+  before_action :ensure_and_set_current_user
   before_action :set_admin_user, only: [:show, :update, :destroy]
 
   # GET /admin_users

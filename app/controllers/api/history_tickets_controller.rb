@@ -1,4 +1,5 @@
 class Api::HistoryTicketsController < Api::BaseController
+  before_action :ensure_and_set_current_user
   before_action :set_history_ticket, only: [:show, :update, :destroy]
 
   # GET /history_tickets

@@ -1,4 +1,5 @@
 class Api::DateVenuesController < Api::BaseController
+  before_action :ensure_and_set_current_user
   before_action :set_date_venue, only: [:show, :update, :destroy]
 
   # GET /date_venues

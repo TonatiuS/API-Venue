@@ -1,4 +1,5 @@
 class Api::TicketsController < Api::BaseController
+  before_action :ensure_and_set_current_user
   before_action :set_ticket, only: [:show, :update, :destroy]
 
   # GET /tickets

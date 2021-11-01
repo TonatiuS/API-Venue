@@ -1,4 +1,5 @@
 class Api::StandUsersController < Api::BaseController
+  before_action :ensure_and_set_current_user
   before_action :set_stand_user, only: [:show, :update, :destroy]
 
   # GET /stand_users
