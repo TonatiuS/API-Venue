@@ -1,4 +1,4 @@
-class TicketTypePolicy < ApplicationPolicy
+class TicketPolicy < ApplicationPolicy
 
   def create?
     return  true if user.admin? || user.stand?

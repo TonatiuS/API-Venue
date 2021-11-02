@@ -1,17 +1,17 @@
 class Api::TicketsController < Api::BaseController
-  before_action :ensure_and_set_current_user
+  before_action :ensure_and_set_current_user, only: [:update, :create]
   before_action :set_ticket, only: [:show, :update, :destroy]
 
   # GET /tickets
   def index
-    @tickets = Ticket.all
+    @tickets = policy_scope(Ticket)
 
-    render json: @tickets
+    render json: {ticket: @tickets}, each_serializer: TicketSerializer, status: 200
   end
 
   # GET /tickets/1
   def show
-    render json: @ticket
+    render json:  @tickets, each_serializer: TicketSerializer, status: 200
   end
 
   # POST /tickets
@@ -19,7 +19,10 @@ class Api::TicketsController < Api::BaseController
     @ticket = Ticket.new(ticket_params)
 
     if @ticket.save
-      render json: @ticket, status: :created, location: @ticket
+      render json: {
+        ticket: ActiveModelSerializers::Adapter::Json.new(TicketSerializer.new(@ticket)).as_json,
+        message: "Successfully create ticket ",
+      }, status: 200
     else
       render json: @ticket.errors, status: :unprocessable_entity
     end
@@ -27,8 +30,12 @@ class Api::TicketsController < Api::BaseController
 
   # PATCH/PUT /tickets/1
   def update
+    authorize @ticket_type
     if @ticket.update(ticket_params)
-      render json: @ticket
+      render json: {
+        ticket: ActiveModelSerializers::Adapter::Json.new(TicketSerializer.new(@ticket)).as_json,
+        message: "Successfully update ticket ",
+      }, status: 200
     else
       render json: @ticket.errors, status: :unprocessable_entity
     end
@@ -42,7 +49,7 @@ class Api::TicketsController < Api::BaseController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_ticket
-      @ticket = Ticket.find(params[:id])
+      @ticket = policy_scope(Ticket).find(params[:id])
     end
 
     # Only allow a list of trusted parameters through.

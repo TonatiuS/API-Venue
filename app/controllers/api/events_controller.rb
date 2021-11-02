@@ -1,5 +1,5 @@
 class Api::EventsController < Api::BaseController
-  before_action :ensure_and_set_current_user
+  before_action :ensure_and_set_current_user, only: [:update, :create]
   before_action :set_event, only: [:show, :update, :destroy]
 
   # GET /events
