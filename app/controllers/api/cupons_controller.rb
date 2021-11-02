@@ -1,5 +1,6 @@
 class Api::CuponsController < Api::BaseController
   before_action :ensure_and_set_current_user
+  before_action :only_admin
   before_action :set_cupon, only: [:show, :update, :destroy]
 
   # GET /cupons

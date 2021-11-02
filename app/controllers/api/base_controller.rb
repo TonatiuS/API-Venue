@@ -22,6 +22,10 @@ class Api::BaseController < ActionController::API
     end
   end
 
+  def only_admin
+    render_not_found unless @current_user.admin?
+  end
+
   def argument_error(message)
     render json: {
       status: "error",
