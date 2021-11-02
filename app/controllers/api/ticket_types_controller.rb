@@ -10,7 +10,7 @@ class Api::TicketTypesController < Api::BaseController
 
   # GET /ticket_types/1
   def show
-    render json: @ticket_types, each_serializer: TicketTypeSerializer, status: 200
+    render json: @ticket_type, serializer: TicketTypeSerializer, status: 200
   end
 
   # POST /ticket_types

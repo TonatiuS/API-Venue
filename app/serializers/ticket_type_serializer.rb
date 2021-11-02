@@ -3,7 +3,6 @@ class TicketTypeSerializer < ApplicationSerializer
                 :type,
                 :total_limit,
                 :total_leftover,
-                :active,
                 :cost,
                 :updated_at,
                 :created_at
