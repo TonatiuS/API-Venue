@@ -10,4 +10,8 @@ class User < ApplicationRecord
   has_one :admin_user
   has_one :stand_user
   enum user_type: {admin: 0, stand:1 ,client_user: 2}
+
+  def assign_type(user_type)
+    update!(user_type: user_type)
+  end
 end

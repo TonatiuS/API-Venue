@@ -4,7 +4,8 @@ class RegistrationsController < Devise::RegistrationsController
     def create
         build_resource(sign_up_params)
         resource.save
-        debugger
-        render json: resource, status: :created
+        resource.update(name:  params[:registration][:user][:name])
+        render json: resource, serializer: SignUpSerializer, status: :created
+
     end
 end

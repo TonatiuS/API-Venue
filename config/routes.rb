@@ -1,8 +1,4 @@
 Rails.application.routes.draw do
-  resources :history_tickets
-  resources :client_users
-  resources :stand_users
-  resources :admin_users
   devise_for :users, skip: %i[registrations sessions passwords]
   devise_scope :user do 
     post '/signup', to: 'registrations#create'
@@ -12,6 +8,10 @@ Rails.application.routes.draw do
   namespace :api do
 
     devise_for :users
+    resources :history_tickets
+    resources :client_users
+    resources :stand_users
+    resources :admin_users  
     resources :tickets
     resources :ticket_types
     resources :events
@@ -19,6 +19,7 @@ Rails.application.routes.draw do
     resources :places
     resources :states
     resources :cupons
+    resource  :sessions, only: [:destroy]
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

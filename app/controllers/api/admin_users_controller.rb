@@ -1,9 +1,11 @@
 class Api::AdminUsersController < Api::BaseController
   before_action :ensure_and_set_current_user
+  before_action :only_admin
   before_action :set_admin_user, only: [:show, :update, :destroy]
 
   # GET /admin_users
   def index
+    debugger
     @admin_users = AdminUser.all
 
     render json: @admin_users
@@ -17,9 +19,8 @@ class Api::AdminUsersController < Api::BaseController
   # POST /admin_users
   def create
     @admin_user = AdminUser.new(admin_user_params)
-
     if @admin_user.save
-      render json: @admin_user, status: :created, location: @admin_user
+      render json: @admin_user, status: :created
     else
       render json: @admin_user.errors, status: :unprocessable_entity
     end

@@ -11,16 +11,17 @@ module AuthenticationService
     def call
       if valid?
         if find_user && @user.valid_password?(@password)
-            jwt = {
-              'sub': @user.id,
-              'email': @user.email,
-            }
+            # jwt = {
+            #   'sub': @user.id,
+            #   'email': @user.email,
+            # }
 
-            value = {
-              token_type: "Bearer",
-              access_token: Auth.issue(jwt),
-            }
-            return value
+            # value = {
+            #   token_type: "Bearer",
+            #   access_token: Auth.issue(jwt),
+            # }
+            
+            return  @user
           
         else
           errors.add(:user, 'Wrong credentials')
