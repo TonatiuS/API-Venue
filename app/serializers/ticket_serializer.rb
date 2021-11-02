@@ -4,9 +4,9 @@ class TicketSerializer < ApplicationSerializer
                 :logo,
                 :people,
                 :total,
-                :event,
                 :updated_at,
                 :created_at
-    has_many :events, serializer: EventSerializer
+
+    belongs_to :event, serializer: EventSerializer
 end
   

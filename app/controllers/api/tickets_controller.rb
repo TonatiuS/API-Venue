@@ -54,6 +54,6 @@ class Api::TicketsController < Api::BaseController
 
     # Only allow a list of trusted parameters through.
     def ticket_params
-      params.require(:ticket).permit(:folio, :logo, :people, :total, :cupon_id, :event)
+      params.require(:ticket).permit(:folio, :logo, :people, :total, :cupon_id, :event_id)
     end
 end
