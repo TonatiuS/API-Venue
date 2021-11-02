@@ -34,6 +34,9 @@ gem 'devise-security'
 gem 'pundit', '~> 2.0'
 gem 'simple_command', '~> 0.0.9'
 
+# Extensions for ActiveRecord
+gem 'active_model_serializers', '~> 0.10.2'
+
 
 
 #Test
