@@ -1,3 +1,3 @@
 class State < ApplicationRecord
-    belongs_to :place
+    has_many :places
 end

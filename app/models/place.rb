@@ -1,5 +1,5 @@
 class Place < ApplicationRecord
-    belongs_to :event
-    has_many :states
+    has_many :events
+    belongs_to :state
 
 end

@@ -2,8 +2,7 @@ class Api::BaseController < ActionController::API
   include Pundit
   rescue_from ActiveRecord::RecordNotFound, with: :not_found
   rescue_from Pundit::NotAuthorizedError, with: :not_found
-  # protect_from_forgery with: :null_session
-  # before_action :set_raven_context
+
 
   def pundit_user
     @current_user
@@ -37,7 +36,6 @@ class Api::BaseController < ActionController::API
   private
 
   def not_found(exception)
-    Raven.capture_exception(exception)
     render_not_found
   end
 
@@ -45,11 +43,5 @@ class Api::BaseController < ActionController::API
     render json: { status: "error", message: "Resource not found" }, status: :not_found
   end
 
-  def set_raven_context
-    if @current_user
-      Raven.user_context(id: @current_user.id, email: @current_user.email)
-    else
-      Raven.user_context(id: session[:current_user_id])
-    end
-  end
+
 end

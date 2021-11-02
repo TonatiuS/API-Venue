@@ -52,6 +52,12 @@ class Api::ClientUsersController < Api::BaseController
     # Use callbacks to share common setup or constraints between actions.
     def set_client_user
       @client_user = policy_scope(ClientUser).find(params[:id])
+      if @client_user.nil?
+        render json:{
+          "message": "not found client_user with id: #{params[:id]}"
+        }
+      end
+      
     end
 
     # Only allow a list of trusted parameters through.

@@ -1,4 +1,4 @@
 class Ticket < ApplicationRecord
-    has_many :event
+    belongs_to :event
     has_many :client_users, through: :history_tickets
 end

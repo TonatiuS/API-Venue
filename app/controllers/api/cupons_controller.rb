@@ -20,7 +20,7 @@ class Api::CuponsController < Api::BaseController
     @cupon = Cupon.new(cupon_params)
 
     if @cupon.save
-      render json: @cupon, status: :created, location: @cupon
+      render json: @cupon, status: :created
     else
       render json: @cupon.errors, status: :unprocessable_entity
     end

@@ -6,8 +6,9 @@ class EventSerializer < ApplicationSerializer
                 :date_venue,
                 :venue_type,
                 :active,
-                :updated_at,
-                :created_at
-                has_many :places, serializer: PlaceSerializer
+                :created_at,
+                :updated_at
+
+    belongs_to :place, serializer: PlaceSerializer
   end
   

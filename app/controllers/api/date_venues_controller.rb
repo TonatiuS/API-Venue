@@ -20,7 +20,7 @@ class Api::DateVenuesController < Api::BaseController
     @date_venue = DateVenue.new(date_venue_params)
 
     if @date_venue.save
-      render json: @date_venue, status: :created, location: @date_venue
+      render json: @date_venue, status: :created
     else
       render json: @date_venue.errors, status: :unprocessable_entity
     end
@@ -48,6 +48,6 @@ class Api::DateVenuesController < Api::BaseController
 
     # Only allow a list of trusted parameters through.
     def date_venue_params
-      params.require(:date_venue).permit(:date_venue, :availability)
+      params.permit(:date_venue, :availability)
     end
 end

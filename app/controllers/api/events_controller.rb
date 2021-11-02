@@ -17,7 +17,6 @@ class Api::EventsController < Api::BaseController
   def create
     @event = Event.new(event_params)
     authorize @event
-
     if @event.save
       render json: {
         event: ActiveModelSerializers::Adapter::Json.new(EventSerializer.new(@event)).as_json,
