@@ -53,6 +53,6 @@ class Api::TicketTypesController < Api::BaseController
 
     # Only allow a list of trusted parameters through.
     def ticket_type_params
-      params.require(:ticket_type).permit(:type, :total_limit, :total_leftover, :event_id, :cost)
+      params.require(:ticket_type).permit(:type_class, :total_limit, :total_leftover, :event_id, :cost)
     end
 end

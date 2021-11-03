@@ -4,9 +4,8 @@ class Ticket < ApplicationRecord
     belongs_to :cupon
     has_many :client_users, through: :history_tickets
     validates :event_id, :people, :ticket_type_id, presence: true
-
-    after_create :gen_folio
-    after_create :update_totals
+    validate :exist_quota?, on: :create
+    after_create :gen_folio, :update_totals, :sell_ticket
 
     def gen_folio
         folio_prefix = "VENUE"
@@ -19,9 +18,18 @@ class Ticket < ApplicationRecord
         save
     end
 
+    def exist_quota?
+        #check ticket_type has availability
+        ticket_type.exist_quota?(self.people.to_i)
+    end
+
+    def sell_ticket
+        #Subtract the number of spaces sold from the ticket_type
+        self.ticket_type.sell_ticket(self.people.to_i)
+    end
 
     private
-    #Logica de precios
+    #Logic price
     def totals_method
         cost = self.ticket_type.cost
         total = (self.people.to_i * cost) 
