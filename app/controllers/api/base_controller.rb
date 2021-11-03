@@ -22,7 +22,7 @@ class Api::BaseController < ActionController::API
   end
 
   def only_admin
-    p @current_user
+    p "usuario ==> #{@current_user}"
     render_not_found unless @current_user&.admin?
     true
   end
