@@ -3,9 +3,7 @@ class Api::StatesController < Api::BaseController
 
   # GET /states
   def index
-    debugger
     @states = State.all
-
     render json: @states
   end
 

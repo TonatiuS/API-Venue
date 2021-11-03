@@ -17,7 +17,6 @@ class Api::TicketsController < Api::BaseController
   # POST /tickets
   def create
     @ticket = Ticket.new(ticket_params)
-    debugger
     if @ticket.save
       render json: {
         ticket: ActiveModelSerializers::Adapter::Json.new(TicketSerializer.new(@ticket)).as_json,

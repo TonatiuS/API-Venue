@@ -11,7 +11,6 @@ class Api::BaseController < ActionController::API
   protected
 
   def ensure_and_set_current_user
-    p "header ===> #{headers['Authorization']}"
     authenticate = AuthenticationService::GetUser.new(request.headers['Authorization']).call
     if authenticate.success?
       @current_user = authenticate.result
