@@ -5,7 +5,6 @@ class Api::AdminUsersController < Api::BaseController
 
   # GET /admin_users
   def index
-    debugger
     @admin_users = AdminUser.all
 
     render json: @admin_users
