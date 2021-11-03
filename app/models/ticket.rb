@@ -25,7 +25,7 @@ class Ticket < ApplicationRecord
     def totals_method
         cost = self.ticket_type.cost
         total = (self.people.to_i * cost) 
-        total = total - total * (self.cupon.average / 100)  if self.cupon.cupon_valid? #metodo sacar porcentaje 
+        total = total - (self.cupon.average / 100).percent_of(total)  if self.cupon.cupon_valid? #metodo sacar porcentaje 
         update!(total: total)
     end
    

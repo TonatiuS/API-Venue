@@ -11,7 +11,7 @@ class Api::TicketsController < Api::BaseController
 
   # GET /tickets/1
   def show
-    render json:  @tickets, each_serializer: TicketSerializer, status: 200
+    render json:  @ticket, serializer: TicketSerializer, status: 200
   end
 
   # POST /tickets
@@ -30,7 +30,7 @@ class Api::TicketsController < Api::BaseController
 
   # PATCH/PUT /tickets/1
   def update
-    authorize @ticket_type
+    authorize @ticket
     if @ticket.update(ticket_params)
       render json: {
         ticket: ActiveModelSerializers::Adapter::Json.new(TicketSerializer.new(@ticket)).as_json,
