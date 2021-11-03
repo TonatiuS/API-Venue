@@ -17,7 +17,7 @@ class Api::TicketsController < Api::BaseController
   # POST /tickets
   def create
     @ticket = Ticket.new(ticket_params)
-
+    debugger
     if @ticket.save
       render json: {
         ticket: ActiveModelSerializers::Adapter::Json.new(TicketSerializer.new(@ticket)).as_json,
@@ -54,6 +54,6 @@ class Api::TicketsController < Api::BaseController
 
     # Only allow a list of trusted parameters through.
     def ticket_params
-      params.require(:ticket).permit(:folio, :logo, :people, :total, :cupon_id, :event_id)
+      params.require(:ticket).permit(:folio, :logo, :people, :total, :cupon_id, :ticket_type_id, :event_id)
     end
 end
