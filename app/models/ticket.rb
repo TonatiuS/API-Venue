@@ -4,7 +4,7 @@ class Ticket < ApplicationRecord
     belongs_to :cupon
     has_many :client_users, through: :history_tickets
     validates :event_id, :people, :ticket_type_id, presence: true
-    validate :exist_quota?, on: :create
+    validate :exist_quota?
     after_create :gen_folio, :update_totals, :sell_ticket
 
     def gen_folio
@@ -20,7 +20,9 @@ class Ticket < ApplicationRecord
 
     def exist_quota?
         #check ticket_type has availability
-        ticket_type.exist_quota?(self.people.to_i)
+        unless ticket_type.exist_quota?(self.people.to_i)
+            errors.add(:people, "the amount of space is greater than available")
+        end
     end
 
     def sell_ticket

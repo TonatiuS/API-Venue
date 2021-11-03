@@ -20,6 +20,9 @@ class TicketType < ApplicationRecord
         end
     end
 
+    def sell_ticket(people)
+        update!(total_leftover: self.total_leftover - people.to_i )
+    end
     def exist_quota?(people)
         self.total_leftover - people.to_i >= 0
     end
